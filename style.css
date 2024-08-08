@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway:wght@400;700&display=swap');
+
+body {
+    font-family: 'Verdana', Arial, Helvetica, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#nav_bar {
+    margin-bottom: 0;
+    padding: 0;
+    background-color: #fff;
+    border: none;
+    z-index: 10000;
+}
+
+.app-name {
+    color: #008ad5ba !important;
+    font-size: 2.1rem;
+    font-weight: bolder;
+    transition: color 0.3s;
+}
+
+.app-name:hover {
+    color: #ffffff !important;
+}
+
+#nav_list li a {
+    color: #00d5a3;
+    font-weight: bolder;
+    transition: color 0.3s;
+    font-size: 1.25rem;
+}
+
+#nav_list li a:hover {
+    color: #ffffff9e;
+}
+
+#logo {
+    max-height: 42px;
+    margin-right: 8px;
+    display: inline-block;
+    margin-top: -15px;
+}
+
+#headRow {
+    background-image: url('https://unsplash.it/1200?image=1056');
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+#tagline {
+    color: black;
+    padding-top: 4%;
+    font-size: 2.3rem;
+}
+
+#tagline-2 {
+    color: black;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    font-family: 'Indie Flower', cursive;
+    font-size: 2rem;
+}
+
+ul#list_inline {
+    color: black;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.jumbo h2 {
+    font-size: 2.2rem;
+    font-weight: lighter;
+    text-align: center;
+}
+
+#city {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.jumbo {
+    margin-bottom: 0;
+    background-color: #4aa1f3;
+    color: white;
+}
+
+input[type='text'], #submitCity {
+    height: 1.8em;
+    font-size: 1.25rem;
+    margin-bottom: 8%;
+}
+
+label {
+    font-size: 1.25rem;
+    margin-top: 2%;
+}
+
+table {
+    font-size: 1.25rem;
+}
+
+#weather-data {
+    min-width: 200px;
+    background-color: #4aa1f3;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.25rem;
+}
+
+#weather-data h3 {
+    padding-top: 3%;
+}
+
+#weather-data p:last-child {
+    padding-bottom: 3%;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.blink {
+    color: black;
+    font-weight: lighter;
+    animation: blinker 0.6s linear infinite;
+}

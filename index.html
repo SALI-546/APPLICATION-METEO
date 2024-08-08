@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Piv4xVNRyMGpqkOy8fgGCGFjKpXx3Rd5i8l5Zo9eDoDyFfjAM0gE8Ahtc/3GpA3S" crossorigin="anonymous">
+    <!-- Font Awesome (if needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+8fhAXLR2lgDQcfRk7SmXAkA23e/7GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav_bar">
+        <div class="container-fluid">
+            <a class="navbar-brand app-name" href="index.html">
+                <img src="img/logo.png" class="img-fluid" id="logo" alt=""><strong>Weather App</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navLinks">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="nav_list">
+                    <li class="nav-item"><a class="nav-link" href="current.html">Current</a></li>
+                    <li class="nav-item"><a class="nav-link" href="forecast.html">Forecast</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://footychat.epizy.com/portfolio" target="_blank">About Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>Welcome to Weather App</h1>
+            <p class="lead">Get the latest weather information for any city around the world.</p>
+        </div>
+    </header>
+    <section class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-primary">Current Weather</h2>
+                <p>Check out the current weather conditions in your city.</p>
+                <a href="current.html" class="btn btn-primary">Current Weather</a>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-primary">Weather Forecast</h2>
+                <p>Get a detailed weather forecast for up to 16 days.</p>
+                <a href="forecast.html" class="btn btn-primary">Weather Forecast</a>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-light text-center py-4">
+        <p class="mb-0">© 2024 Weather App. All rights reserved.</p>
+    </footer>
+    <!-- jQuery (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha384-p4w04TFCBR7Nm/y+pC/uhgGh+kDnZGVa5Oe5sy1l84BjfT3eK0i3tx7ai9oyStjZ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
