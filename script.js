@@ -1,20 +1,41 @@
+function showError(message) {
+    var error = '<div class="alert alert-danger alert-dismissible text-center" role="alert">';
+    error += '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+    error += message + '</div>';
+    document.getElementById('error').innerHTML = error;
+}
+
 function getWeather(city) {
     if (city) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var formattedData = formatWeather(JSON.parse(xhr.responseText));
-                document.getElementById("weather-data").innerHTML = formattedData;
-                document.getElementById('cityname').value = "";
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    try {
+                        var formattedData = formatWeather(JSON.parse(xhr.responseText));
+                        document.getElementById("weather-data").innerHTML = formattedData;
+                        document.getElementById('cityname').value = "";
+                    } catch (e) {
+                        showError("Error parsing weather data. Please try again.");
+                    }
+                } else if (this.status == 404) {
+                    showError("City not found. Please check the spelling and try again.");
+                } else if (this.status == 401) {
+                    showError("API key is invalid. Please contact the administrator.");
+                } else if (this.status == 429) {
+                    showError("Too many requests. Please wait a moment and try again.");
+                } else {
+                    showError("Failed to fetch weather data. Please try again later.");
+                }
             }
         };
-        xhr.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=d610395e85b50074b834a0234b0776db");
+        // Note: In production, API key should be stored server-side
+        // This is a placeholder - replace with your actual API key or implement server-side proxy
+        const API_KEY = "YOUR_API_KEY_HERE"; // Replace with actual API key
+        xhr.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + API_KEY);
         xhr.send();
     } else {
-        var error = '<div class="alert alert-danger alert-dismissible text-center" role="alert">';
-        error += '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-        error += 'You must enter a city name!</div>';
-        document.getElementById('error').innerHTML = error;
+        showError("You must enter a city name!");
     }
     return false;
 }
@@ -33,16 +54,41 @@ function formatWeather(data) {
 }
 
 function getForecast(city, days) {
+    if (!city) {
+        showError("You must enter a city name!");
+        return false;
+    }
+    if (!days || isNaN(days) || days < 1 || days > 16) {
+        showError("Please enter a valid number of days (1-16)!");
+        return false;
+    }
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var formattedData = formatForecast(JSON.parse(xhr.responseText));
-            document.getElementById("forecast").innerHTML = formattedData;
-            document.getElementById('cityname').value = "";
-            document.getElementById('days').value = "";
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                try {
+                    var formattedData = formatForecast(JSON.parse(xhr.responseText));
+                    document.getElementById("forecast-data").innerHTML = formattedData;
+                    document.getElementById('cityname').value = "";
+                    document.getElementById('days').value = "";
+                } catch (e) {
+                    showError("Error parsing forecast data. Please try again.");
+                }
+            } else if (this.status == 404) {
+                showError("City not found. Please check the spelling and try again.");
+            } else if (this.status == 401) {
+                showError("API key is invalid. Please contact the administrator.");
+            } else if (this.status == 429) {
+                showError("Too many requests. Please wait a moment and try again.");
+            } else {
+                showError("Failed to fetch forecast data. Please try again later.");
+            }
         }
     };
-    xhr.open("GET", "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=" + days + "&units=metric&appid=d610395e85b50074b834a0234b0776db");
+    // Note: In production, API key should be stored server-side
+    // This is a placeholder - replace with your actual API key or implement server-side proxy
+    const API_KEY = "YOUR_API_KEY_HERE"; // Replace with actual API key
+    xhr.open("GET", "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=" + days + "&units=metric&appid=" + API_KEY);
     xhr.send();
     return false;
 }
